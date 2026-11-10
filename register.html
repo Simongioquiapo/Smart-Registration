@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Tindahan ni SAB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/register.css">
+  <link rel="icon" type="image/png" href="../image/logo.png">
+</head>
+<body>
+
+  <div class="auth-card">
+    <div class="brand">
+      <div class="brand-icon">
+        <img src="../image/logo.png" alt="Portal Logo" width="50" height="50">
+      </div>
+      <span class="brand-name">Tindahan ni SAB</span>
+    </div>
+
+    <div class="auth-header">
+      <h2>Create Account</h2>
+      <p>Join us to get started with your account</p>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <form id="registerForm" novalidate>
+      <div class="form-group">
+        <label for="regName">Full Name</label>
+        <div class="input-wrapper">
+          <input type="text" id="regName" name="name" placeholder="John Doe" required autocomplete="name" minlength="2" maxlength="60">
+        </div>
+        <span class="field-error" id="regNameError"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="regEmail">Email Address</label>
+        <div class="input-wrapper">
+          <input type="email" id="regEmail" name="email" placeholder="name@company.com" required autocomplete="email">
+        </div>
+        <span class="field-error" id="regEmailError"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="regPassword">Password</label>
+        <div class="input-wrapper">
+          <input type="password" id="regPassword" name="password" placeholder="••••••••" required autocomplete="new-password" minlength="8">
+          <button type="button" class="password-toggle" id="toggleRegPassword" aria-label="Toggle password visibility">
+            <svg class="eye-icon eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <svg class="eye-icon eye-closed" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"></path>
+              <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"></path>
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+            </svg>
+          </button>
+        </div>
+        <span class="field-error" id="regPasswordError"></span>
+        <div class="password-strength" id="passwordStrength">
+          <div class="strength-bars">
+            <span class="bar" data-level="1"></span>
+            <span class="bar" data-level="2"></span>
+            <span class="bar" data-level="3"></span>
+            <span class="bar" data-level="4"></span>
+          </div>
+          <span class="strength-label" id="strengthLabel"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="regConfirmPassword">Confirm Password</label>
+        <div class="input-wrapper">
+          <input type="password" id="regConfirmPassword" name="confirmPassword" placeholder="••••••••" required autocomplete="new-password">
+          <button type="button" class="password-toggle" id="toggleRegConfirmPassword" aria-label="Toggle confirm password visibility">
+            <svg class="eye-icon eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <svg class="eye-icon eye-closed" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"></path>
+              <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"></path>
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+            </svg>
+          </button>
+        </div>
+        <span class="field-error" id="regConfirmPasswordError"></span>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Create Account</button>
+    </form>
+
+    <div class="auth-footer">
+      <p>Already have an account? <a href="index.html">Sign in here</a></p>
+    </div>
+  </div>
+
+  <!-- Success Popup Modal -->
+  <div id="successModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="modal-box">
+      <div class="modal-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <h3 id="successTitle">Registration Successful!</h3>
+      <p>Your account has been created. Redirecting you to the login page…</p>
+      <button type="button" id="modalContinueBtn" class="btn btn-primary">Continue to Login</button>
+    </div>
+  </div>
+
+  <script type="module" src="../js/register.js"></script>
+</body>
+</html>
